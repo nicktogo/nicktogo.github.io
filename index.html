@@ -152,7 +152,7 @@
 </li>
 <li><p><code>git rebase origin/master</code><br>变基（奇奇怪怪的翻译 233）<br>让新代码能够应用到本地的当前分支上，我这里希望本地的 <code>master</code> 能够有远程 <code>master</code>的新代码，就之前先切换回 <code>master</code> （git checkout master） 分支上了，<br><img src="http://i.imgur.com/C8ZRtJ9.png" alt=""></p>
 <p><code>rebase</code> 时的当前分支也可以是其他分支，假设，在还没有 <code>rebase</code> 之前，有一个分支基于 <code>master</code> 新建出来了，叫做 <code>test2</code>, 它的代码和以前的 <code>master</code> 是一样的，也没有我新加的那句话，现在我想让它也更新，可以：<br><code>git checkout test2</code><br><code>git rebase origin/master</code></p>
-<p><strong>Tip</strong><br>一般，我们在自己的分支上 <strong>写代码</strong> 那一步时，也有很多人在同时开发，远程仓库的<code>master</code> 上可能通过了很多 <code>pull request</code>， 这样我们自己的分支的代码其实就变落后了。<br>所以，<strong>写代码</strong> 那一步的时候，可以常常 <code>fetch</code> 一下，有输出，说明远程库有新东西，输出里面是更新的分支名，发现有 <code>master</code> 的话，就可以 <code>rebase</code> 了，保持自己代码和 <code>master</code> 最新 </p>
+<p><strong>Tip</strong><br>一般，我们在自己的分支上 <em>写代码</em> 那一步时，也有很多人在同时开发，远程仓库的<code>master</code> 上可能通过了很多 <code>pull request</code>， 这样我们自己的分支的代码其实就变落后了。<br>所以，<em>写代码</em> 那一步的时候，可以常常 <code>fetch</code> 一下，有输出，说明远程库有新东西，输出里面是更新的分支名，发现有 <code>master</code> 的话，就可以 <code>rebase</code> 了，保持自己代码和 <code>master</code> 最新 </p>
 </li>
 </ul>
 </li>
