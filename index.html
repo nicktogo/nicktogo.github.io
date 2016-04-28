@@ -95,72 +95,11 @@
     <div class="article-content">
         
         <p>上学期组队做项目，由于队友们都不熟悉 Git 以及 GitHub 的操作，特意写了一份 Git 工作流手册。<br>这学期有时间，整理了下。</p>
-<h2 id="项目初始">项目初始</h2><p>打开 git shell ，cd 进入一个文件夹内，这个文件夹下将会产生新的子文件夹，放置 github 上的代码<br>之后执行 <code>git clone https://github.com/nicktogo/NiceLife.git</code></p>
-<blockquote>
-<p>NiceLife 目前是一个私有仓库，作为我的 .Net 课程项目正在开发中，所以你并不能 clone 下来。<br>你可以在 github 上创建自己的一个，方法请查阅：<a href="https://help.github.com/articles/creating-a-new-repository/" target="_blank" rel="external">Create a new repo</a>.</p>
-</blockquote>
-<p>执行完上述命令后，会把整个代码拉下来，在生成的 <code>/d/Developer/NiceLife</code> 文件夹里。</p>
-<p>如：  </p>
-<p><img src="http://i.imgur.com/WpoffP8.png" alt="">  </p>
-<h2 id="开发">开发</h2><ul>
-<li>进入 <code>NiceLife</code> 文件夹</li>
-<li><p>右键 <code>git bash</code>  </p>
-<p>  <img src="http://i.imgur.com/vBYrMQn.png" alt="">  </p>
-<p>  可以看到当前我们在 <code>master</code> 分支上，这个是我们的主分支，所有最终代码都会在这个分支上。<br>  <strong>注意：</strong> 不要直接在 <code>master</code> 开发</p>
-</li>
-<li><p>新建分支 ( <code>branch</code> )</p>
-<ul>
-<li><p><code>git branch branchname</code><br>新建分支</p>
-</li>
-<li><p><code>git checkout branchname</code><br>切换到刚刚新建的分支上</p>
-</li>
-<li><p><code>git checkout -b branch_name</code><br>新建一个分支，并且切换到这个分支上</p>
-<p>此时，新分支的代码和当前分支的代码是一样的(我现在的当前分支就是 <code>master</code> )</p>
-<p><img src="http://i.imgur.com/MPxhGXO.png" alt=""></p>
-</li>
-</ul>
-</li>
-<li>写代码<br>  <code>README.md</code> 中原本只有一句：An Universal Windows Platform app for managing your daily life。<br>  现在，我在这句之前加了下面一句话：<br>  <code>This is a best practice for git</code> </li>
-<li><p>提交</p>
-<ul>
-<li><p><code>git status</code> 查看状态<br><img src="http://i.imgur.com/0Ebr4BF.png" alt="">  </p>
-<p><code>modified</code> 显示我刚刚修改过的文件<br>常见的还有 <code>new</code> 表示是新添加的文件，<code>deleted</code> 表示是被删除的文件  </p>
-</li>
-<li><p><code>git add .</code> 或 <code>git add -u</code><br>前一个是把所有已修改或新的文件加入暂存区<br>后一个是仅仅把已修改的添加到暂存区，那为什么有了第一个还有第二个？==<br>因为有时候文件夹里出现的新文件不是你创建的类啊什么的，而是一些无关文件，例如 <code>log</code> 、<code>配置文件（里面有用户名密码什么的）</code> 什么的，你不想要 <code>git</code> 也接管这些东西，以免到时候上传到远程仓库的时候被人发现用户名密码，<code>log</code> 什么的也不要让它接管，要不然会使得远程仓库看起来很乱，远程仓库一般只有：<strong>代码、资源文件、LICENSE、README.md</strong>等<br>所以如果没有新的<strong>代码、资源文件</strong>的时候，我们一般只用 <code>git add -u</code><br>如果你确定新增加的只有代码、资源文件，可以直接 <code>git add .</code><br><img src="http://7vzny7.com1.z0.glb.clouddn.com/%E6%8D%95%E8%8E%B7.PNG?attname=" alt="">  </p>
-</li>
-<li><p><code>git commit -m &quot;msg&quot;</code><br><code>msg</code> 简短地说明这次代码变动，要有意义。<br><img src="http://i.imgur.com/SkuQExs.png" alt="">  </p>
-<p>会打印出改动</p>
-</li>
-<li><p><code>git push origin HEAD:[之前的分支名]</code><br>将代码推送到远程仓库，<code>origin</code> 指的就是那个远程仓库的地址<br><code>HEAD:[branch name]</code>，表示把当前分支推送到远程仓库相同的分支上，远程仓库上没有的话，就会新建一个， <code>*[new branch]</code> 就表示远程仓库新建了一个分支<br>一般本地仓库和远程仓库对应的分支名相同，方便一一对应，不过不同名也是可以的<br><img src="http://i.imgur.com/3uB1aZC.png" alt=""></p>
-<p><img src="http://i.imgur.com/beeZiTM.png" alt=""><br>看，GitHub已经发现我推了一个新分支上去了<br>切换到这个分支上去看看 <code>README.md</code>是不是真的变了<br><img src="http://i.imgur.com/j0I9uEH.png" alt="">  </p>
-<p>呃，忘记换行了，总之，就是 <code>README.md</code> 真的发生了变化<br><img src="http://i.imgur.com/TW2xMm4.png" alt="">  </p>
-<p>但是切换到 <code>master</code> 分支，<code>readme</code> 没变化<br><img src="http://i.imgur.com/B6tbXY8.png" alt="">  </p>
-<p>说明这两个分支各自有自己的代码，但是我们不是协同开发吗，自己写自己的，有个蛋用啊！</p>
-</li>
-<li><p><code>pull request</code><br>合并请求（好像叫做拉取请求更合适）  </p>
-<p>请求 <code>master</code> 将 <code>develop/nick-test</code> 的代码拉过去，合并掉，这样后者的代码变化也会发生在前者上，这个要在 <code>GitHub</code> 上操作了</p>
-<p><img src="http://i.imgur.com/lRgweNf.png" alt="">          </p>
-<p>左边是接受新代码的分支，右边是要被合并的分支，还可以写一写为什么要发起这次合并请求，搞定后右下角~<br><img src="http://i.imgur.com/9JJ8Zu1.png" alt="">  </p>
-<p>其实继续往下拉还能看到之前 <code>git commit</code> 时候的详情，<code>README.md</code> 里有个 <code>+</code> 开头的，就是我新增的代码<br><img src="http://i.imgur.com/ujg9loD.png" alt=""></p>
-</li>
-<li><p><code>master</code> 处理合并请求<br><img src="http://i.imgur.com/1b0ffz5.png" alt=""></p>
-<p>不过先别急着合并，负责合并的人，得先看看有哪些改动，常说的代码审查。<br><img src="http://i.imgur.com/lLf3h91.png" alt=""></p>
-<p>觉得没问题之后，就可以合并了，完成后，可以看到 <code>master</code> 的 <code>README.md</code> 也变了。<br><img src="http://i.imgur.com/sEJxi3u.png" alt=""></p>
-</li>
-<li><p><code>git fetch origin</code><br>更新本地仓库的代码，前面的改动都是只在远程仓库里的，本地不会自动跟进的，要手动取回代码<br><img src="http://i.imgur.com/4xBmjfT.png" alt="">  </p>
-<p><code>master</code> 对应的远程分支有更新！但是我们这个时候看本地仓库里 <code>master</code> 的 <code>README.md</code> 还是原来的样子，是没有新增的那句话的！<br><img src="http://i.imgur.com/akskMLr.png" alt=""></p>
-</li>
-<li><p><code>git rebase origin/master</code><br>变基（奇奇怪怪的翻译 233）<br>让新代码能够应用到本地的当前分支上，我这里希望本地的 <code>master</code> 能够有远程 <code>master</code>的新代码，就之前先切换回 <code>master</code> （git checkout master） 分支上了，<br><img src="http://i.imgur.com/C8ZRtJ9.png" alt=""></p>
-<p><code>rebase</code> 时的当前分支也可以是其他分支，假设，在还没有 <code>rebase</code> 之前，有一个分支基于 <code>master</code> 新建出来了，叫做 <code>test2</code>, 它的代码和以前的 <code>master</code> 是一样的，也没有我新加的那句话，现在我想让它也更新，可以：<br><code>git checkout test2</code><br><code>git rebase origin/master</code></p>
-<p><strong>Tip</strong><br>一般，我们在自己的分支上 <em>写代码</em> 那一步时，也有很多人在同时开发，远程仓库的<code>master</code> 上可能通过了很多 <code>pull request</code>， 这样我们自己的分支的代码其实就变落后了。<br>所以，<em>写代码</em> 那一步的时候，可以常常 <code>fetch</code> 一下，有输出，说明远程库有新东西，输出里面是更新的分支名，发现有 <code>master</code> 的话，就可以 <code>rebase</code> 了，保持自己代码和 <code>master</code> 最新 </p>
-</li>
-</ul>
-</li>
-</ul>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/2016/03/25/git-workflow/#more">Read More</a>
           
        </p>
     </div>
@@ -217,69 +156,11 @@
         <blockquote>
 <p>最近数据挖掘的作业涉及到了熵，然而上课没怎么听懂，不知道 <code>Entroy 、Information Gain</code>的概念，Gogle了下，发现<code>StackOverflow</code>上有一篇极好的答案。为了理解透彻，尝试翻译了下。</p>
 </blockquote>
-<p><a href="http://stackoverflow.com/questions/1859554/what-is-entropy-and-information-gain" target="_blank" rel="external">原文链接</a></p>
-<p>假设我们现在需要生成一颗决策树，这颗决策树的作用是根据名字来判断性别。<br>给出如下的数据：</p>
-<pre><code>名字     性别
--<span class="ruby">-----------  
-</span>Shley     f   
-Brian     m   
-Caroline  f 
-David       m
-</code></pre><p>以这些数据来生成决策树，再来预测 <code>Amro</code> （原作者的名字）的性别。</p>
-<p>第一步，找出上述数据中与目标值（性别）相关的特征，例如：首尾字母、长度、元音个数等（选择方法可见<a href="https://en.wikipedia.org/wiki/Feature_selection" target="_blank" rel="external">维基百科</a>）。经过选择后，我们的数据如下：  </p>
-<pre><code> 名字       是否以元音结尾  元音个数    长度        性别
------------------------------------------------
-Shley         <span class="number">1</span>         <span class="number">3</span>           <span class="number">6</span>        f
-Brian         <span class="number">0</span>         <span class="number">2</span>           <span class="number">5</span>        m
-Caroline      <span class="number">1</span>         <span class="number">4</span>           <span class="number">8</span>        f
-David         <span class="number">0</span>         <span class="number">2</span>           <span class="number">5</span>        m  
-</code></pre><p>ok，现在我们就可以生成一颗决策树了，例如：  </p>
-<pre><code>长度 &lt; <span class="number">7</span>
-|   元音个数 &lt; <span class="number">3</span>: male
-|   元音个数 &gt; =<span class="number">3</span>
-|   |   是否已元音结尾 = <span class="number">1</span>: female
-|   |   是否已元音结尾 = <span class="number">0</span>: male
-长度 &gt;= <span class="number">7</span>: female
-</code></pre><p>每个结点都表示某个特征的检查，根据检查结果往左或往右，直到最终的预测结果。</p>
-<p>现在来检验下这颗树的准确度。以 <code>Amro</code> 为例，长度小于 7 ，元音个数（ <code>a</code> 与 <code>o</code> ）小于 3 ，所以最终结果是 <code>male</code>，译者也试了下自己的名字 <code>Nick</code>，长度小于 7，元音个数（ <code>i</code>）小于 1，结果也是 <code>male</code> ，看来这颗树的准确度不错233。</p>
-<p>决策树的生成方式是从上至下的，经过上一个结点的判断后，才能进入下一个结点继续判断。然而，问题就来了，如何在每个结点选择需要判断的特征？换句话说，在之前的生成树中，为什么第一个结点是长度，而不是元音个数或者是否以元音结尾呢？</p>
-<p>解决这个问题的思想就是</p>
-<pre><code>所选择的特征，其对给定的数据的分类能力是最强的。
-</code></pre><p>这句奇奇怪怪的话是什么鬼意思？比如，在上面的例子中，如果有一个特征是：名字中是否含有 <code>l</code> ，有就是女生，没有就是男生，那这个特征的分类能力就是最强的了，因为它能够直接将所给数据分成男生或女生，根本就不需要上述繁琐的生成树了。 然而这个特征比较极端，能够一眼看出，像是 <code>长度</code> 这个特征就不太好看出，这个时候就需要万能的数学来加以衡量了。</p>
-<p>经过特征 <code>名字中是否含有 l</code> ，判断后，所得的目标值 直接就是男生或者女生，不需要再通过其它特征判断，也称为纯净度 <em>purity</em> 最高，用信息 <em>Information</em> 来衡量。</p>
-<p>熵 <em>Entroy</em> ，则是用来衡量不纯度 <em>impurity</em>。<br>对于结果只有两种情况的事件来说，其熵的计算公式是：</p>
-<pre><code>Entropy = - p<span class="list">(<span class="keyword">a</span>)</span>*log<span class="list">(<span class="keyword">p</span><span class="list">(<span class="keyword">a</span>)</span>)</span> - p<span class="list">(<span class="keyword">b</span>)</span>*log<span class="list">(<span class="keyword">p</span><span class="list">(<span class="keyword">b</span>)</span>)</span>
-</code></pre><p><code>p(a)</code> 与 <code>p(b)</code> 分别表示这两种情况的概率，通常以 2 为底计算对数。</p>
-<p>以抛硬币的例子来说，正反面的概率都为 <code>1/2</code>，则 <code>Entropy = 1</code>。<br>下图表示了熵相对于概率的变化曲线。横轴表示其中一种情况的概率，纵轴表示熵的值，结合老师PPT上所说，熵越高，不纯度越低，我们所获知的信息就越多。也就是说抛硬币时，如果硬币正面的概率为 <code>1</code> ，那其实我们也得不到任何信息，概率恢复为 <code>1/2</code> 时，我们反而获得了最多的信息。开个奇怪的脑洞，那是不是说，生活中，不确定性才是我们真正需要的呢？</p>
-<p><img src="http://7vzny7.com1.z0.glb.clouddn.com/binary_entropy.png" alt=""></p>
-<p>对于会出现多种结果的事件，熵的计算公式如下：  </p>
-<p><img src="http://7vzny7.com1.z0.glb.clouddn.com/entropy.png" alt=""><br>通常 <code>b = 2</code></p>
-<hr>
-<p>回到之前以名字判断姓名的的问题上，假设我们在构造决策树时，选择某个特征作为结点时，正在衡量 <code>是否以元音结束</code> 这个特征：</p>
-<pre><code>是否以元音结束
-  [<span class="number">9</span>m,<span class="number">5f</span>]          &lt;--- [..,..] 表示到达这个结点的数据及分类情况，刚开始是<span class="number">9</span>个男生，<span class="number">5</span>个女生
-/          \            
-   =<span class="number">1</span>          =<span class="number">0</span>
- -------     -------
- [<span class="number">3</span>m,<span class="number">4f</span>]     [<span class="number">6</span>m,<span class="number">1f</span>]
-</code></pre><p>则在判断前，<code>p(m) = 9/14</code>，<code>p(f) = 5/14</code>，其熵计算如下：  </p>
-<pre><code>Entropy_before = - (<span class="number">5</span>/<span class="number">14</span>)*log2(<span class="number">5</span>/<span class="number">14</span>) - (<span class="number">9</span>/<span class="number">14</span>)*log2(<span class="number">9</span>/<span class="number">14</span>) = <span class="number">0.9403</span>  
-</code></pre><p>判断后，对于左分支，即以元音结尾，其熵计算如下：</p>
-<pre><code>Entropy_left = - (<span class="number">3</span>/<span class="number">7</span>)*log2(<span class="number">3</span>/<span class="number">7</span>) - (<span class="number">4</span>/<span class="number">7</span>)*log2(<span class="number">4</span>/<span class="number">7</span>) = <span class="number">0.9852</span>
-</code></pre><p>同理，对于右分支</p>
-<pre><code>Entropy_right = - (<span class="number">6</span>/<span class="number">7</span>)*log2(<span class="number">6</span>/<span class="number">7</span>) - (<span class="number">1</span>/<span class="number">7</span>)*log2(<span class="number">1</span>/<span class="number">7</span>) = <span class="number">0.5917</span>
-</code></pre><p>判断结束之后，根据左右分支数据所占的比例（左右各占 <code>7/14</code>），我们也能够计算出判断后的熵：</p>
-<pre><code>Entropy_after = <span class="number">7</span>/<span class="number">14</span>*Entropy_left + <span class="number">7</span>/<span class="number">14</span>*Entropy_right = <span class="number">0.7885</span>
-</code></pre><p>则这时，我们所获得的信息增益 <em>Information Gain</em> 为</p>
-<pre><code>Information_Gain = Entropy_before - Entropy_after = <span class="number">0.1518</span>
-</code></pre><p>也就是说，经过上面的计算后，我们成功地将不纯度减少了 <em>0.1518</em>，其中信息 <em>Information</em> 以 <em>bit</em> 为单位。</p>
-<p>在生成决策树的每个结点时，我们都要对每个特征进行上述的计算，然后根据贪婪法则（<em>Greedy manner</em>）选择信息增益最大的特征作为该结点的决策依据。从上往下，直到所有经过判断后得出的结点都只包含纯净的数据，在本例上，就是，只有男生或女生。如果不纯净，就要为这个结点按照上述的计算继续选择特征作为决策依据。</p>
-<hr>
-<p>呼，终于翻译完了，一方面感觉翻译要做到 <strong>信雅达</strong> 真难；另一方面真心觉得，学习姿势有条件还是去看原文吧，译者水平不行就是坑，比如这篇XD。 </p>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/2015/10/31/entropy-infromation-gain/#more">Read More</a>
           
        </p>
     </div>
