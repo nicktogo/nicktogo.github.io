@@ -1,0 +1,475 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>ShareDB 简单使用介绍 | Hey, what&#39;s going on?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Nick">
+    
+
+    
+    <meta name="description" content="ShareDB 是一个整合了前后端的 OT 框架，可以很方便地自行搭建服务端和客户端。框架基于 Node.JS 实现。">
+<meta name="keywords" content="JavaScript,ShareDB,Node.JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ShareDB 简单使用介绍">
+<meta property="og:url" content="https://nicktogo.github.io/2017/05/13/ShareDB-simple-usage/index.html">
+<meta property="og:site_name" content="Hey, what&#39;s going on?">
+<meta property="og:description" content="ShareDB 是一个整合了前后端的 OT 框架，可以很方便地自行搭建服务端和客户端。框架基于 Node.JS 实现。">
+<meta property="og:updated_time" content="2017-05-13T14:41:46.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ShareDB 简单使用介绍">
+<meta name="twitter:description" content="ShareDB 是一个整合了前后端的 OT 框架，可以很方便地自行搭建服务端和客户端。框架基于 Node.JS 实现。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hey, what&#39;s going on?" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Hey, what&#39;s going on?" title="Hey, what&#39;s going on?"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hey, what&#39;s going on?">Hey, what&#39;s going on?</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:nicktogo.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/05/13/ShareDB-simple-usage/" title="ShareDB 简单使用介绍" itemprop="url">ShareDB 简单使用介绍</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Nick" target="_blank" itemprop="author">Nick</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-13T14:35:02.000Z" itemprop="datePublished"> 发表于 2017-05-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ShareDB-基本使用方法"><span class="toc-number">1.</span> <span class="toc-text">ShareDB 基本使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端搭建步骤"><span class="toc-number">1.1.</span> <span class="toc-text">服务端搭建步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端搭建步骤"><span class="toc-number">1.2.</span> <span class="toc-text">客户端搭建步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在-Node-项目中的使用"><span class="toc-number">1.2.1.</span> <span class="toc-text">在 Node 项目中的使用</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<p><a href="https://github.com/share/sharedb" target="_blank" rel="external">ShareDB</a> 是一个整合了前后端的 OT 框架，可以很方便地自行搭建服务端和客户端。框架基于 Node.JS 实现。</p>
+<a id="more"></a>
+<h2 id="ShareDB-基本使用方法"><a href="#ShareDB-基本使用方法" class="headerlink" title="ShareDB 基本使用方法"></a>ShareDB 基本使用方法</h2><p><a href="https://github.com/share/sharedb" target="_blank" rel="external">ShareDB</a> 是一个整合了前后端的 OT 框架，可以很方便地自行搭建服务端和客户端。框架基于 Node.JS 实现。</p>
+<h3 id="服务端搭建步骤"><a href="#服务端搭建步骤" class="headerlink" title="服务端搭建步骤"></a>服务端搭建步骤</h3><ul>
+<li>新建 Node 项目<ul>
+<li><code>npm init -y</code></li>
+</ul>
+</li>
+<li><p>安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install ShareDB@1.0.0-beta.7 \</div><div class="line">ot-text \</div><div class="line">ws \</div><div class="line">websocket-push-stream --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建 server.js 文件  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ShareDB = <span class="built_in">require</span>(<span class="string">'sharedb'</span>);</div><div class="line"><span class="keyword">var</span> WebSocket = <span class="built_in">require</span>(<span class="string">'ws'</span>);</div><div class="line"><span class="keyword">var</span> WebSocketStream = <span class="built_in">require</span>(<span class="string">'websocket-push-stream'</span>);</div><div class="line"><span class="keyword">var</span> otText = <span class="built_in">require</span>(<span class="string">'ot-text'</span>);</div><div class="line"></div><div class="line"><span class="comment">// ShareDB 可以支持多种 OT 类型，例如 JSON 文本，普通文本，富文本等</span></div><div class="line"><span class="comment">// 具体文档可以查看 https://github.com/ottypes/docs</span></div><div class="line"><span class="comment">// 这里使用普通文本类型 ot-text</span></div><div class="line">ShareDB.types.register(otText.type); <span class="comment">// otText.type === 'text'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> backend = <span class="keyword">new</span> ShareDB();</div><div class="line"></div><div class="line"><span class="comment">// 监听 9090 端口</span></div><div class="line"><span class="keyword">var</span> wss = <span class="keyword">new</span> WebSocket.Server(&#123;<span class="attr">port</span>: <span class="number">9090</span>&#125;, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'WebSocket Server Created.'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 监听新的客户端 WebSocket 链接，对新的链接进行封装，交给 ShareDB 处理</span></div><div class="line">wss.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ws</span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">// ShareDB 使用 stream 来与客户端实现通信，从而可以忽略底层的传输方式</span></div><div class="line">  <span class="comment">// 这里使用 WebSocket 作为底层的传输方式，保证实时数据传输</span></div><div class="line">  <span class="keyword">let</span> stream = <span class="keyword">new</span> WebSocketStream(ws);</div><div class="line"></div><div class="line">  <span class="comment">// ShareDB 的前后端通信的数据以 JSON 格式传输</span></div><div class="line">  <span class="comment">// 服务端收到数据后，需要将数据从 JSON 转换为 Object</span></div><div class="line">  <span class="comment">// 并通过放入 stream 的缓存区 (push)，交给 ShareDB 处理</span></div><div class="line">  ws.on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="comment">// 可以在这里对 msg 进行筛选，自定义的数据可以另行处理，不交给 ShareDB 处理</span></div><div class="line">    stream.push(<span class="built_in">JSON</span>.parse(msg));</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="comment">// 使 ShareDB 监听新的链接</span></div><div class="line">  backend.listen(stream);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动 server  </p>
+<ul>
+<li><code>node server.js</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="客户端搭建步骤"><a href="#客户端搭建步骤" class="headerlink" title="客户端搭建步骤"></a>客户端搭建步骤</h3><p>ShareDB 的客户端可以在浏览器网页和 Node 项目中使用。嵌入浏览器网页的用法可以参考 <a href="https://github.com/share/sharedb/tree/master/examples" target="_blank" rel="external">https://github.com/share/sharedb/tree/master/examples</a></p>
+<h4 id="在-Node-项目中的使用"><a href="#在-Node-项目中的使用" class="headerlink" title="在 Node 项目中的使用"></a>在 Node 项目中的使用</h4><ul>
+<li><p>安装依赖</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">npm</span> <span class="selector-tag">install</span> <span class="selector-tag">ShareDB</span>@<span class="keyword">1</span>.<span class="keyword">0</span>.<span class="keyword">0</span>-<span class="keyword">beta</span>.<span class="keyword">7</span> ws --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>示例代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ShareDB = <span class="built_in">require</span>(<span class="string">'sharedb/lib/client'</span>);</div><div class="line"><span class="keyword">var</span> WebSocket = <span class="built_in">require</span>(<span class="string">'ws'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost:9090'</span>);</div><div class="line">socket.on(<span class="string">'open'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">// 通过 WebSocket 与 ShareDB 建立链接</span></div><div class="line">  <span class="keyword">var</span> connection = <span class="keyword">new</span> ShareDB.Connection(socket);</div><div class="line"></div><div class="line">  <span class="comment">// 从 ShareDB 返回 collectionName 下的 documentName 文档</span></div><div class="line">  <span class="comment">// 同一个 collectionName 下可以有多个文档</span></div><div class="line">  <span class="comment">// 类似于 MongoDB 的存储方式</span></div><div class="line">  <span class="keyword">var</span> doc = connection.get(<span class="string">'collectionName'</span>, <span class="string">'documentName'</span>);</div><div class="line"></div><div class="line">  <span class="comment">// 从 ShareDB 服务器获取最新文档内容</span></div><div class="line">  <span class="comment">// 并指示 ShareDB 将后续对此文档的操作事件发送到此客户端</span></div><div class="line">  doc.subscribe( <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (doc.type === <span class="literal">null</span>) &#123;</div><div class="line">      <span class="comment">// 返回的 doc.type 为 null，则说明此文档还没有被创建</span></div><div class="line">      <span class="comment">// ShareDB 上不存在这个文档，所以这里做一次创建文档的操作</span></div><div class="line">      <span class="comment">// 第一个参数是文档内容，依据 OT 类型（第二个参数）的不同有不同的格式</span></div><div class="line">      <span class="comment">// 这里指定新的 doc 的 OT 类型为 'text'，所以文档内容为字符串</span></div><div class="line">      <span class="keyword">this</span>.doc.create(‘This is a <span class="keyword">new</span> <span class="built_in">document</span>’, <span class="string">'text'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="comment">// doc.data 即为文档内容</span></div><div class="line">      <span class="built_in">console</span>.log(doc.data);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="comment">// 监听事件，‘op’ 表示对文档有修改</span></div><div class="line">  doc.on(<span class="string">'op'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">op, source</span>) </span>&#123;</div><div class="line">    <span class="comment">// source === true 表示是本客户端对 doc 的修改</span></div><div class="line">    <span class="keyword">if</span> (source) &#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// op 是对文档的修改数据，对于不同的 OT 类型有不同的格式</span></div><div class="line">    <span class="comment">// 具体参考 https://github.com/ottypes/docs</span></div><div class="line">    <span class="built_in">console</span>.log(op);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="comment">// 通过 doc 提交文档改动</span></div><div class="line">  <span class="comment">// 在获得文档改动数据后，需要将改动数据转换成 OT 类型所对应的格式并通过 doc.submitOp 提交</span></div><div class="line">  <span class="comment">// 具体参考 https://github.com/ottypes/docs</span></div><div class="line">  <span class="comment">// 表示跳过 1 个字符，插入 a</span></div><div class="line">  <span class="keyword">let</span> op1 = [<span class="number">1</span>, <span class="string">'a'</span>];</div><div class="line">  <span class="comment">// 提交改动到 ShareDB 服务端</span></div><div class="line">  doc.submitOp(op1);</div><div class="line"></div><div class="line">  <span class="comment">// 表示跳过 2 个字符，删除 1 个长度的字符</span></div><div class="line">  <span class="keyword">let</span> op2 = [<span class="number">2</span>, &#123;<span class="attr">d</span>: <span class="number">1</span>&#125;];</div><div class="line">  <span class="comment">// 提交改动到 ShareDB 服务端</span></div><div class="line">  doc.submitOp(op2);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/JavaScript/">JavaScript</a><a href="/tags/ShareDB/">ShareDB</a><a href="/tags/Node-JS/">Node.JS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://nicktogo.github.io/2017/05/13/ShareDB-simple-usage/" data-title="ShareDB 简单使用介绍 | Hey, what&#39;s going on?" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/25/git-workflow/"  title="Git工作流">
+ <strong>下一篇：</strong><br/> 
+ <span>Git工作流
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ShareDB-基本使用方法"><span class="toc-number">1.</span> <span class="toc-text">ShareDB 基本使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端搭建步骤"><span class="toc-number">1.1.</span> <span class="toc-text">服务端搭建步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端搭建步骤"><span class="toc-number">1.2.</span> <span class="toc-text">客户端搭建步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在-Node-项目中的使用"><span class="toc-number">1.2.1.</span> <span class="toc-text">在 Node 项目中的使用</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/数据挖掘/" title="数据挖掘">数据挖掘<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ShareDB/" title="ShareDB">ShareDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Node-JS/" title="Node.JS">Node.JS<sup>1</sup></a></li>
+			
+		
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Pingshan from China. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Nick">Nick</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
